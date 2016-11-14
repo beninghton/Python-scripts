@@ -26,21 +26,29 @@ print "\nShow me the databases:"
 #for row in rows:
 #    print row
 
-column_names = [row[0] for row in cur]
-cur.close()
-for row in column_names:
-    cur2.execute("""SELECT %s from fruits_stat""",[AsIs(row)])
-    rows = cur2.fetchall()
-    mystring = ' '.join(map(str, (rows)))
-    print mystring
+#column_names = [row[0] for row in cur]
+#cur.close()
+#for row in column_names:
+#    cur2.execute("""SELECT %s from fruits_stat""",[AsIs(row)])
+#    rows = cur2.fetchall()
+#    mystring = ' '.join(map(str, (rows)))
+#    print mystring
 #    for row1 in rows:
 #	row1=row1[:-1]
 #	print row1
-    print row+" "+str(rows)
-cur2.close()
+#    print row+" "+str(rows)
+#cur2.close()
 
 cur3 =  conn.cursor()
-cur3.execute("""SELECT apple from fruits_stat""")
+cur3.execute("SELECT * from fruits_stat")
 res = cur3.fetchall()
-#print res
+print "Apple =",
+for i in res:
+    print str(i[0]),
+
+print " "
+print "Orange =",
+
+for i in res:
+    print str(i[1]),
 cur3.close()
